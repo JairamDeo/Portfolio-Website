@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center bg-gradient-to-r from-purple-800 via-black to-blue-900 text-white">
+    <section id="home" className="relative h-[710px] sm:h-screen flex items-center justify-center bg-gradient-to-r from-purple-800 via-black to-blue-900 text-white">
       <Canvas>
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.5} />
         <ambientLight intensity={0.5} />
