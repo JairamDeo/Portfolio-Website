@@ -102,7 +102,6 @@ const Contact = () => {
             >
               Send Message
             </motion.button>
-            <div className="text-center text-white">{result}</div>
           </motion.form>
 
           {/* Contact Information Card */}
