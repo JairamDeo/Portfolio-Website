@@ -16,16 +16,16 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-6">
             <a href="https://github.com/JairamDeo" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={30} className="text-white hover:text-cyan-400 transition duration-300" />
+              <FaGithub size={30} className="text-white hover:text-cyan-400 transition duration-300" data-aos='flip-left' data-aos-duration='1000' />
             </a>
             <a href="https://www.linkedin.com/in/jairamdeo/" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin size={30} className="text-white hover:text-cyan-400 transition duration-300" />
+              <FaLinkedin size={30} className="text-white hover:text-cyan-400 transition duration-300" data-aos='flip-left' data-aos-duration='1500' />
             </a>
             <a href="mailto:jairamdeo2002@gmail.com" target="_blank" rel="noopener noreferrer">
-              <FaEnvelope size={30} className="text-white hover:text-cyan-400 transition duration-300" />
+              <FaEnvelope size={30} className="text-white hover:text-cyan-400 transition duration-300" data-aos='flip-left' data-aos-duration='2000' />
             </a>
             <a href="tel:+918830973046" target="_blank" rel="noopener noreferrer">
-              <FaPhoneAlt size={30} className="text-white hover:text-cyan-400 transition duration-300" />
+              <FaPhoneAlt size={30} className="text-white hover:text-cyan-400 transition duration-300" data-aos='flip-left' data-aos-duration='2500' />
             </a>
           </div>
         </div>
