@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const menuItems = ["Home", "About", "Skills", "Experience", "Projects", "Contact"];
+  const menuItems = ["Home", "About","Experience", "Skills", "Projects", "Education", "Contact"];
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
