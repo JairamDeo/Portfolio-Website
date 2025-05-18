@@ -44,6 +44,7 @@ const Hero = () => {
             deleteSpeed={50}
             delaySpeed={1000}
             
+            
           />
         </p>
         <a
