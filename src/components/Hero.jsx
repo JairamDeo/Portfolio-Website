@@ -48,6 +48,7 @@ const Hero = () => {
         <a
           href="/Jairam Deo_Full Stack Developer_Resume.pdf"
           download
+          
           className="mt-6 inline-block bg-gradient-to-r from-purple-800 to-blue-900 text-white px-6 py-3 rounded-md hover:from-purple-700 hover:to-blue-800 transition duration-300 ease-in-out transform hover:scale-105"
         >
           Download CV
