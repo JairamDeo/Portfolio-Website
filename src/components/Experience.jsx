@@ -5,22 +5,12 @@ const experiences = [
   {
     role: "Full Stack Developer",
     company: "Spinovix Software Pvt Ltd",
-    start: "Jan 2024",
-    end: "Dec 2024",
+    start: "January 2024",
+    end: "June 2025",
     description: [
       "Developed scalable MERN stack applications.",
       "Optimized REST APIs, reducing response time by 25%.",
       "Designed and deployed a responsive website using React.js.",
-    ],
-  },
-  {
-    role: "Java Intern",
-    company: "Cybrix Technologies Pvt Ltd",
-    start: "Jun 2020",
-    end: "Jul 2020",
-    description: [
-      "Specialized in Java technology during a 6-week internship.",
-      "Built a desktop login/signup application with secure authentication.",
     ],
   },
 ];
