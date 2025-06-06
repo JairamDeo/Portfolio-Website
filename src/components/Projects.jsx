@@ -14,7 +14,7 @@ const projects = [
     name: "Syntax Level-Up Website",
     description: "A responsive website with user authentication and personalized portals.",
     tech: "React.js, Node.js, Express, MySQL",
-    link: "https://syntax-level-up-organisation-web-application.vercel.app/",
+    link: "https://syntax-level-up-ten.vercel.app/",
   },
   {
     name: "Food Delivery App",
