@@ -11,18 +11,18 @@ const About = () => {
       subtitle: "Development Experience",
       color: "from-blue-500 to-cyan-500"
     },
-    {
-      icon: <Award className="w-6 h-6" />,
-      title: "5+ Projects",
-      subtitle: "Successfully Delivered",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "MERN Stack",
-      subtitle: "Specialist",
-      color: "from-green-500 to-emerald-500"
-    }
+    // {
+    //   icon: <Award className="w-6 h-6" />,
+    //   title: "5+ Projects",
+    //   subtitle: "Successfully Delivered",
+    //   color: "from-purple-500 to-pink-500"
+    // },
+    // {
+    //   icon: <Zap className="w-6 h-6" />,
+    //   title: "MERN Stack",
+    //   subtitle: "Specialist",
+    //   color: "from-green-500 to-emerald-500"
+    // }
   ];
 
   const skills = [
@@ -31,7 +31,7 @@ const About = () => {
     "Database Optimization",
     "API Development",
     "DevOps & Monitoring",
-    "UI/UX Implementation"
+    "Figma Translation To Code"
   ];
 
   return (
@@ -76,7 +76,7 @@ const About = () => {
                   <img
                     src={profilePic}
                     alt="Jairam Deo - Full Stack Developer"
-                    className="w-full h-full rounded-full object-cover bg-slate-800"
+                    className="w-full h-full rounded-full object-fit bg-slate-800"
                   />
                 </div>
                 
