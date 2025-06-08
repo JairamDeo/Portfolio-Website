@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Coffee, Lightbulb, Target, Award, Zap } from "lucide-react";
-import profilePic from "../assets/profile.png";
+import { Code, Coffee, Lightbulb, Target, Award, Zap, ExternalLink } from "lucide-react";
+import { Link } from "react-scroll";
+import profilePic from "../assets/profile.jpg";
 
 const About = () => {
   const highlights = [
@@ -211,6 +212,13 @@ const About = () => {
             >
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30">
                 <span className="text-blue-300">Ready to build something amazing together?</span>
+                  <Link to="contact"
+                  spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    <ExternalLink className="w-4 h-4 text-blue-400 group-hover/link:text-blue-300 cursor-pointer" />
+                  </Link>
                 <span className="text-2xl">💫</span>
               </div>
             </motion.div>
