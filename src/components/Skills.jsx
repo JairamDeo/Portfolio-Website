@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback, memo } from "react";
 import { motion } from "framer-motion";
-import { FaJava, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaNodeJs, FaDatabase, FaGit, FaGithub, FaDocker, FaAws, FaCloud, FaServer } from "react-icons/fa";
-import { SiMongodb, SiMysql, SiExpress, SiAmazonec2, SiAmazons3, SiCloudflare } from "react-icons/si";
+import { FaJava, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaNodeJs, FaDatabase, FaGit, FaGithub, FaDocker, FaAws, FaCloud } from "react-icons/fa";
+import { SiMongodb, SiMysql, SiExpress, SiAmazonec2, SiAmazons3, SiCloudflare, SiTailwindcss } from "react-icons/si";
 
 // Static skill data optimized for performance
 const skillCategories = [
@@ -19,6 +19,7 @@ const skillCategories = [
       { name: "React JS", icon: FaReact, level: 90, hoverColor: "from-cyan-500 to-blue-600" },
       { name: "HTML", icon: FaHtml5, level: 95, hoverColor: "from-orange-500 to-red-500" },
       { name: "CSS", icon: FaCss3Alt, level: 88, hoverColor: "from-blue-500 to-indigo-600" },
+      { name: "TailwindCSS", icon: SiTailwindcss, level: 88, hoverColor: "from-blue-500 to-indigo-600" },
       { name: "JavaScript", icon: FaJsSquare, level: 85, hoverColor: "from-yellow-400 to-yellow-600" },
     ],
   },
