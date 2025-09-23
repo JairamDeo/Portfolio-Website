@@ -22,7 +22,7 @@ const About = memo(() => {
   const highlights = useMemo(() => [
     {
       icon: Code,
-      title: "1.6+ Years",
+      title: "1 Years",
       subtitle: "Development Experience",
       color: "from-blue-500 to-cyan-500"
     }
@@ -164,7 +164,7 @@ const About = memo(() => {
             </div>
 
             {/* Highlights - Responsive Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {highlights.map((highlight, index) => (
                 <motion.div
                   key={index}
@@ -180,7 +180,7 @@ const About = memo(() => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
 
             {/* Skills Grid - Responsive */}
             <div className="space-y-4">

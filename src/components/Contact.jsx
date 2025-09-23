@@ -55,9 +55,9 @@ const ThreeBackground = memo(() => {
     renderer.setClearColor(0x000000, 0);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Create floating particles
+    // Create floating particles with reduced count for better performance
     const particleGeometry = new THREE.BufferGeometry();
-    const particleCount = 100;
+    const particleCount = 50; // Reduced from 100 to 50 for better performance
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -78,7 +78,8 @@ const ThreeBackground = memo(() => {
       size: 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.8,
+      sizeAttenuation: false // Better performance
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
@@ -86,14 +87,20 @@ const ThreeBackground = memo(() => {
 
     camera.position.z = 5;
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop with throttling for better performance
+    let lastTime = 0;
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS;
+    
+    const animate = (currentTime) => {
+      if (currentTime - lastTime >= frameInterval) {
+        particles.rotation.x += 0.001;
+        particles.rotation.y += 0.002;
+        
+        renderer.render(scene, camera);
+        lastTime = currentTime;
+      }
       animationRef.current = requestAnimationFrame(animate);
-      
-      particles.rotation.x += 0.001;
-      particles.rotation.y += 0.002;
-      
-      renderer.render(scene, camera);
     };
 
     // Handle resize
@@ -104,7 +111,7 @@ const ThreeBackground = memo(() => {
     };
 
     window.addEventListener('resize', handleResize);
-    animate();
+    animate(0);
 
     sceneRef.current = scene;
     rendererRef.current = renderer;
@@ -144,10 +151,10 @@ const CountrySelector = memo(({ selectedCountry, onSelect, isOpen, onToggle }) =
         onClick={onToggle}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="flex items-center gap-2 px-3 py-3 bg-slate-800/60 border border-slate-600/50 rounded-l-xl hover:border-purple-500/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+        className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-2 sm:py-3 bg-slate-800/60 border border-slate-600/50 rounded-l-xl hover:border-purple-500/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
       >
         <span className="text-lg">{selectedCountry.flag}</span>
-        <span className="text-sm text-gray-300">{selectedCountry.dialCode}</span>
+        <span className="text-xs sm:text-sm text-gray-300">{selectedCountry.dialCode}</span>
         <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </motion.button>
 
@@ -158,7 +165,7 @@ const CountrySelector = memo(({ selectedCountry, onSelect, isOpen, onToggle }) =
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 z-50 w-80 mt-2 bg-slate-800/95 backdrop-blur-md border border-slate-600/50 rounded-xl shadow-2xl overflow-hidden"
+            className="absolute top-full left-0 z-50 w-72 sm:w-80 mt-2 bg-slate-800/95 backdrop-blur-md border border-slate-600/50 rounded-xl shadow-2xl overflow-hidden"
           >
             <div className="p-3 border-b border-slate-600/50">
               <input
@@ -272,15 +279,15 @@ const ContactInfoCard = memo(({ icon: Icon, title, value, href, gradient }) => (
     rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
     whileHover={{ scale: 1.05, y: -5 }}
     whileTap={{ scale: 0.95 }}
-    className="group block p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20"
+    className="group block p-4 sm:p-6 bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20"
   >
     <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${gradient} mb-4 group-hover:scale-110 transition-transform duration-300`}>
       <Icon className="w-6 h-6 text-white" />
     </div>
-    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+    <h3 className="text-base sm:text-lg font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
       {title}
     </h3>
-    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+    <p className="text-sm sm:text-base text-gray-400 group-hover:text-gray-300 transition-colors">
       {value}
     </p>
     <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-purple-400 mt-2 transition-colors" />
@@ -409,7 +416,7 @@ const Contact = memo(() => {
   }), []);
 
   return (
-    <section id="contact" className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 text-white relative overflow-hidden min-h-screen">
+    <section id="contact" className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12 sm:py-16 lg:py-20 text-white relative overflow-hidden min-h-screen">
       <ThreeBackground />
       
       {/* Background Effects */}
@@ -418,16 +425,16 @@ const Contact = memo(() => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.1),transparent_50%)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-blue-500 bg-clip-text text-transparent mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-300 to-blue-500 bg-clip-text text-transparent mb-4"
           >
             Get In Touch
           </motion.h2>
@@ -437,19 +444,19 @@ const Contact = memo(() => {
           />
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto px-4"
           >
             Ready to bring your ideas to life? Let's collaborate and create something amazing together!
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Contact Form */}
           <motion.div
             variants={itemVariants}
-            className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50 shadow-2xl"
+            className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-4 sm:p-6 lg:p-8 border border-slate-700/50 shadow-2xl"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name Field */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -466,7 +473,7 @@ const Contact = memo(() => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 text-sm sm:text-base"
                   placeholder="Enter your full name"
                 />
               </motion.div>
@@ -487,7 +494,7 @@ const Contact = memo(() => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 text-sm sm:text-base"
                   placeholder="Enter your email address"
                 />
               </motion.div>
@@ -515,7 +522,7 @@ const Contact = memo(() => {
                     value={formData.mobile}
                     onChange={handleInputChange}
                     required
-                    className="flex-1 px-4 py-3 bg-slate-800/60 border border-slate-600/50 border-l-0 rounded-r-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300"
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-slate-800/60 border border-slate-600/50 border-l-0 rounded-r-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 text-sm sm:text-base"
                     placeholder="Enter mobile number"
                   />
                 </div>
@@ -536,8 +543,8 @@ const Contact = memo(() => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 resize-none"
+                  rows={4}
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project or any questions you have..."
                 />
               </motion.div>
@@ -564,7 +571,7 @@ const Contact = memo(() => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   <>
@@ -584,7 +591,7 @@ const Contact = memo(() => {
           {/* Contact Info & Hire Me */}
           <motion.div variants={itemVariants} className="space-y-8">
             {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={info.title}
