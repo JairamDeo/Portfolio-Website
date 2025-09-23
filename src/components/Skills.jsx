@@ -65,7 +65,7 @@ const skillCategories = [
 const statsData = [
   { number: "6+", label: "Categories", color: "from-blue-400 to-cyan-400" },
   { number: "20+", label: "Technologies", color: "from-purple-400 to-pink-400" },
-  { number: "2+", label: "Years Experience", color: "from-green-400 to-emerald-400" }
+  { number: "1+", label: "Years Experience", color: "from-green-400 to-emerald-400" }
 ];
 
 // Optimized SkillCard component

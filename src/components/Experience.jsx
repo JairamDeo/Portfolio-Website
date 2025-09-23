@@ -8,9 +8,9 @@ const experiences = [
     company: "Spinovix Software Pvt. Ltd.",
     website: "https://spinovix.com/",
     location: "Nagpur, MH, IN",
-    start: "January 2024",
-    end: "June 2025",
-    duration: "1.6 years",
+    start: "September 2024",
+    end: "February 2025",
+    duration: "",
     description: [
       "🚀 Architected and deployed the entire company website using React.js and Tailwind CSS, delivering a modern, responsive digital presence",
       "🔐 Engineered secure RESTful APIs with Node.js, Express.js, and JWT authentication, serving 20+ concurrent users with role-based access control",
