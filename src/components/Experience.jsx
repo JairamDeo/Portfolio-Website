@@ -32,7 +32,7 @@ const experiences = [
     company: "Spinovix Software Pvt. Ltd.",
     website: "https://spinovix.com/",
     location: "Nagpur, MH, IN",
-    start: "September 2024",
+    start: "August 2024",
     end: "February 2025",
     duration: "6 months",
     description: [
