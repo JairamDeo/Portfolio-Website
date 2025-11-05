@@ -5,11 +5,11 @@ import { ExternalLink, Code, Database, Cloud, Monitor, Shield, Calendar, MapPin,
 const experiences = [
   {
     role: "DevOps Engineer",
-    company: "Greamio Technologies Pvt. Ltd.",
-    website: "https://greamio.com/",
-    location: "Nagpur, MH, IN",
+    company: "HisanLabs Pvt. Ltd.",
+    website: "https://hisanlabs.in/",
+    location: "Pune, MH, IN",
     start: "March 2025",
-    end: "September 2025",
+    end: "october 2025",
     duration: "6 months",
     description: [
       "🏗️ Assisted in deployment and management of AWS Infrastructure using Terraform for Infrastructure as Code",
