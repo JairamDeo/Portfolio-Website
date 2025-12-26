@@ -13,6 +13,8 @@
     "@fontsource/poppins": "^5.1.1",
     "@react-three/drei": "^9.120.8",
     "@react-three/fiber": "^8.17.12",
+    "baseline-browser-mapping": "^2.9.11",
+    "caniuse-lite": "^1.0.30001761",
     "dotenv": "^16.4.7",
     "framer-motion": "^11.17.0",
     "react": "^18.3.1",
